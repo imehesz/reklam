@@ -40,19 +40,23 @@
 
             $response = array();
             // for security reasons, we return the domain
-            $response['domain'] = $domain;
             $response['status'] = 'success';
 
-            $reklams = find_reklam();
+            $reklams = find_reklam( $domain );
 
-            foreach( $reklams as $reklam ) 
+            $response['item_count'] = sizeof( $reklams );
+
+            if( sizeof( $reklams ) )
             {
-                $response['results'][] = array(
-                    'title'     => $reklam->title,
-                    'image'     => $reklam->image,
-                    'link'      => $reklam->goto_link
-                );
-            }
+                foreach( $reklams as $reklam ) 
+                {
+                    $response['results'][] = array(
+                        'title'     => $reklam->title,
+                        'image'     => $reklam->image,
+                        'link'      => $reklam->goto_link
+                    );
+                }
+            }   
 
             return json_encode( $response );
         }
