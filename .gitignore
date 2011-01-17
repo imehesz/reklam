@@ -1,2 +1,4 @@
 *.sqlite
 development.php
+admin/assets/*
+admin/protected/runtime/*
