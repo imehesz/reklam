@@ -10,27 +10,17 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'score'); ?>
-		<?php echo $form->textField($model,'score'); ?>
-		<?php echo $form->error($model,'score'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'created_at'); ?>
-		<?php echo $form->textField($model,'created_at'); ?>
-		<?php echo $form->error($model,'created_at'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'domain'); ?>
 		<?php echo $form->textField($model,'domain',array('size'=>60,'maxlength'=>100)); ?>
 		<?php echo $form->error($model,'domain'); ?>
+        <div class="hint">the domain that will be used via REST (ie: mehesz.net)</div>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'enddate'); ?>
-		<?php echo $form->textField($model,'enddate'); ?>
-		<?php echo $form->error($model,'enddate'); ?>
+		<?php echo $form->labelEx($model,'title'); ?>
+		<?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($model,'title'); ?>
+        <div class="hint">the title for the image hover</div>
 	</div>
 
 	<div class="row">
@@ -52,9 +42,15 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'title'); ?>
-		<?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'title'); ?>
+		<?php echo $form->labelEx($model,'enddate'); ?>
+		<?php echo $form->textField($model,'enddate'); ?>
+		<?php echo $form->error($model,'enddate'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'score'); ?>
+		<?php echo $form->textField($model,'score'); ?>
+		<?php echo $form->error($model,'score'); ?>
 	</div>
 
 	<div class="row buttons">
