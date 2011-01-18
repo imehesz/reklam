@@ -35,21 +35,27 @@
 		<?php echo $form->error($model,'image'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'startdate'); ?>
-		<?php echo $form->textField($model,'startdate'); ?>
-		<?php echo $form->error($model,'startdate'); ?>
-	</div>
+    <?php echo CHtml::activeLabelEx($model,'startdate'); ?>
+    <?php echo CHtml::activeTextField($model,'startdate',array("id"=>"startdate", 'value' => $model->startdate == '' ? date( 'm/d/Y', time() ) : date('m/d/Y',$model->startdate))); ?>
+    <?php $this->widget('application.extensions.calendar.SCalendar',
+            array(
+                'inputField'=>'startdate',
+                'ifFormat'=>'%m/%d/%Y',
+                ));
+    ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'enddate'); ?>
-		<?php echo $form->textField($model,'enddate'); ?>
-		<?php echo $form->error($model,'enddate'); ?>
-	</div>
+    <?php echo CHtml::activeLabelEx($model,'enddate'); ?>
+    <?php echo CHtml::activeTextField($model,'enddate',array("id"=>"enddate", 'value' => $model->enddate == '' ? date( 'm/d/Y', time() ) : date('m/d/Y',$model->enddate))); ?>
+    <?php $this->widget('application.extensions.calendar.SCalendar',
+            array(
+                'inputField'=>'enddate',
+                'ifFormat'=>'%m/%d/%Y',
+                ));
+    ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'score'); ?>
-		<?php echo $form->textField($model,'score'); ?>
+		<?php echo $form->textField($model,'score', array( 'value' => $model->score == '' ? 0 : $model->score ) ); ?>
 		<?php echo $form->error($model,'score'); ?>
 	</div>
 

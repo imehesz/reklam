@@ -42,15 +42,24 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'score',
-		'created_at',
 		'domain',
-		'enddate',
+        array(
+		    'name' => 'created_at',
+            'value' => 'date("m/d/Y",$data->created_at)',
+        ),
+        array(
+		    'name' => 'startdate',
+            'value' => 'date("m/d/Y",$data->startdate)',
+        ),
+        array(
+		    'name' => 'enddate',
+            'value' => 'date("m/d/Y",$data->enddate)',
+        ),
 		'goto_link',
-		'id',
+		'score',
 		/*
+		'id',
 		'image',
-		'startdate',
 		'title',
 		*/
 		array(

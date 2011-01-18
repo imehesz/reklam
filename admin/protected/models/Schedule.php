@@ -41,6 +41,7 @@ class Schedule extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+            array( 'domain,image', 'required' ),
 			array('score, created_at, enddate, startdate', 'numerical', 'integerOnly'=>true),
 			array('domain', 'length', 'max'=>100),
 			array('goto_link, image, title', 'length', 'max'=>255),
@@ -104,4 +105,19 @@ class Schedule extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+
+    public function beforeValidate()
+    {
+        parent::beforeValidate();
+
+        $this->startdate    = strtotime( $this->startdate . ' 01:00:00' );
+        $this->enddate      = strtotime( $this->enddate . ' 01:00:00' );
+        if( $this->isNewRecord )
+        {
+            $this->created_at = time();
+        }
+
+        return true;
+    }
 }
