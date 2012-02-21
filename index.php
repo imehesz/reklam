@@ -15,6 +15,7 @@
 
         $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
         
+		$dsn = null;
         option('dsn', $dsn);
         option('db_conn', $db);
     }
